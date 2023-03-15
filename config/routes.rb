@@ -3,4 +3,10 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+  get "/:short_url", to: "urls#index"
+  scope '/api' do
+    scope '/v1' do
+      post "/shorten", to: 'urls#shorten'
+    end
+  end
 end
