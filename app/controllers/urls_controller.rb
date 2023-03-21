@@ -1,5 +1,3 @@
-require 'base64'
-
 class UrlsController < ApplicationController
     def index
         short_url = params[:short_url]
@@ -45,7 +43,7 @@ class UrlsController < ApplicationController
         url.generate_short_url
         url.save!
 
-        render json: { short_url: url.short_url }
+        render json: url.as_json(only: [:short_url]), status: 201
     end
 
     def url_params
